@@ -1,24 +1,12 @@
 const express = require('express');
+const api = require('./api')
 const middleware = require('./midleware')
 const app = express();
 
+//router
+app.use('/api', api)
 
-app.get('/api/athletes', (req, res) => {
-    res.send('hola desde api atletas')
-});
-
-app.post('/api/athletes', (req, res) => {
-    res.send('creando recurso...Athletes')
-})
-
-app.get('/api/sports', (req, res) => {
-    res.send('obteniendo recurso...Sports')
-});
-
-app.post('/api/sports', (req, res) => {
-    res.send('creando recurso...Sports')
-})
-
+//Middlewares
 app.use(middleware.notFound);
 app.use(middleware.errorHandler)
 
