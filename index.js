@@ -1,9 +1,14 @@
+require('dotenv').config()
+
 const express = require('express');
 const morgan = require('morgan')
 const helmet = require('helmet')
 
 const middleware = require('./midleware')
+
+
 const api = require('./api')
+const db = require('./db')
 
 const app = express();
 
@@ -16,6 +21,8 @@ app.use('/api', api);
 app.use(middleware.notFound);
 app.use(middleware.errorHandler)
 
-app.listen(8080, () => {
-    console.log('app listening on port 8080')
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, () => {
+    console.log(`app listening on port ${PORT}`)
 })
