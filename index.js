@@ -1,10 +1,16 @@
 const express = require('express');
-const api = require('./api')
+const morgan = require('morgan')
+const helmet = require('helmet')
+
 const middleware = require('./midleware')
+const api = require('./api')
+
 const app = express();
 
 //router
-app.use('/api', api)
+app.use(helmet());
+app.use(morgan('tiny'));
+app.use('/api', api);
 
 //Middlewares
 app.use(middleware.notFound);

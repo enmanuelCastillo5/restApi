@@ -9,7 +9,6 @@ router.post('/', (req, res) => {
     res.send('creando recurso...Sports')
 })
 
-
 router.put('/', (req, res) => {
     res.send('modificando ...Sports')
 })
