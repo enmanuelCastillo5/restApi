@@ -3,24 +3,24 @@ const mongoose = require('mongoose')
 const athletesSchema = new mongoose.Schema({
     firstName: {
         type: String,
-        require: true
+        required: true
     },
     lastName: {
         type: String,
-        require: false
+        required: true
     },
-    birthday: {
+    birthdate: {
         type: Date,
-        require: false
+        required: false
     },
     retired: {
         type: Boolean,
-        require: false
+        required: false
     },
     sports: [{
         type: mongoose.Types.ObjectId,
         ref: 'Sport',
-        require: true,
+        required: true,
     }]
 });
 

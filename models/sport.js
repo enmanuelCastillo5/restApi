@@ -3,11 +3,12 @@ const mongoose = require('mongoose')
 const sportsSchema = new mongoose.Schema({
     name: {
         type: String,
-        require: true
+        required: true,
+        unique: true
     },
-    playersPerTeams: {
+    playersPerTeam: {
         type: Number,
-        require: false
+        required: false
     }
 });
 

@@ -3,6 +3,7 @@ require('dotenv').config()
 const express = require('express');
 const morgan = require('morgan')
 const helmet = require('helmet')
+const bodyParser = require('body-parser')
 
 const middleware = require('./midleware')
 const api = require('./api')
@@ -12,6 +13,7 @@ const app = express();
 //router
 app.use(helmet());
 app.use(morgan('tiny'));
+app.use(bodyParser.json());
 app.use('/api', api);
 
 //Middlewares
