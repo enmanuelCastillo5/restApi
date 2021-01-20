@@ -2,9 +2,26 @@ const express = require('express')
 const router = express.Router()
 const Sport = require('../models/sport')
 
-
-router.get('/', (req, res) => {
-    res.send('obteniendo recurso...Sports')
+//OBTENER TODOS LOS DEPORTES
+router.get('/', async (req, res, error) => {
+    try {
+        const sports = await Sport.find()
+        res.status(200).json(sports);
+    } catch (error) {
+        res.status(400);
+        next(error)
+    }
+});
+// OBTENER UN DEPORTE POR :ID
+router.get('/:id', async (req, res, error) => {
+    const { id } = req.params
+    try {
+        const sport = await Sport.findById(id)
+        res.status(200).json(sport);
+    } catch (error) {
+        res.status(400);
+        next(error)
+    }
 });
 
 
